@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        /*Задача 3.
+        
+        Создайте страницу-калькулятор. Разместите на странице два поля ввода и кнопки для арифметических операций над данными введенными в поля ввода. Реализуйте данную страницу двумя способами – с использованием модели DOM Level 0 (через атрибуты) и DOM Level 2.*/
+        
+        /* DOM LEVEL 0 */
+
+        window.onload=function(){
+          var arg1=document.getElementById("x"),
+             arg2=document.getElementById("y"),
+             div=document.getElementById("result"),
+             buttons=document.getElementsByTagName('button');
+            buttons[0].onclick=function(){
+              div.innerText=+arg1.value + +arg2.value;
+            }
+            buttons[1].onclick=function(){
+              div.innerText=+arg1.value - +arg2.value;
+            }
+        buttons[2].onclick=function(){
+              div.innerText=+arg1.value * +arg2.value;
+            }
+        buttons[3].onclick=function(){
+              div.innerText=+arg1.value / +arg2.value;
+            }
+        }
+
+
+        /*DOM LEVEL 2 */
+
+        //window.onload = function () {
+        //    var arg1 = document.getElementById("x"),
+        //      arg2 = document.getElementById("y"),
+        //      div = document.getElementById("result"),
+        //      buttons = document.getElementsByTagName('button');
+        //    buttons[0].addEventListener("click", function () {
+        //        div.innerText = +arg1.value + +arg2.value;
+        //    });
+
+        //    buttons[1].addEventListener("click", function () {
+        //        div.innerText = +arg1.value - +arg2.value;
+        //    });
+        //    buttons[2].addEventListener("click", function () {
+        //        div.innerText = +arg1.value * +arg2.value;
+        //    });
+        //    buttons[3].addEventListener("click", function () {
+        //        div.innerText = +arg1.value / +arg2.value;
+        //    });
+        //}
+    </script>
+</head>
+<body>
+    <input type="text" placeholder="Первый аргумент" id="x">
+    <button>+</button>
+    <button>-</button>
+    <button>*</button>
+    <button>/</button>
+    <input type="text" placeholder="Второй аргумент" id="y">
+
+    <br/><span>Результат: </span>
+    <span id="result"> </span>
+</body>
+</html>

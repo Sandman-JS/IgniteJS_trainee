@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <meta charset="utf-8" />
+  <script>
+    /*Задача 1.
+
+    Создайте страницу с кнопкой. Создайте код, который загрузит на страницу картинку img.jpg (файл находитя в папке classwork) асинхронно через секунду после загрузки страницы.*/
+    window.onload = function() {
+      var button = document.getElementById("btn1");
+      var imageGet = document.getElementById("field");
+
+      button.onclick = function() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "img.jpg", true);
+        xhr.send();
+
+        xhr.onload = function() {
+          setTimeout(function() {
+            imageGet.innerHTML = "<img src='img.jpg'>";
+          }, 1000);
+        };
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <button id='btn1'>Загрузить картинку</button>
+  <div id='field'></div>
+</body>
+
+</html>

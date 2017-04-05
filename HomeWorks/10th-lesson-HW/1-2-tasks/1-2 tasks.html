@@ -1,0 +1,76 @@
+﻿<html>
+<head>
+  <meta charset="utf-8"/>
+  <title></title>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script></head>
+<body>
+  <input type="button" value="ЗАГРУЗИТЬ" onclick="loadPages()"/>
+ 
+  <div id="one"></div>
+  <div id="two"></div>
+
+    <script>
+/*Задача 1.
+
+Создайте две HTML страницы с разным контентом. Создайте страницу, в которой находиться сценарий загружающий и отображающий контент двух этих страниц при нажатии на кнопку. Контент должен загружаться асинхронно.*/
+  
+  /*var PAGES = [
+    { from: "c1.html", to: $("div#one") },
+    { from: "c2.html", to: $("div#two") }
+  ];
+
+  function loadHTML(filename) {
+    return $.ajax(filename, {
+      type: "GET"
+    });
+  }
+
+  function setInnerHTML(domNode,htmldata) {
+    domNode
+      .html(htmldata);
+  }
+
+  function loadPages() {
+    PAGES.forEach(function(files) {
+      loadHTML(files.from)
+        .done(setInnerHTML.bind(undefined, files.to))
+        
+    });
+  }*/
+
+/*Задача 2.
+
+Модифицируйте код предыдущего задания так, чтобы максимальное время обработки запроса не превышало 20 секунд и при первышении этого времени запрос был отменен, а пользователь видел на экране сообщение об ошибке.*/
+  
+  var PAGES = [
+    { from: "c1.html", to: $("div#one") },
+    { from: "c2.html", to: $("div#two") }
+  ];
+
+  function loadHTML(filename) {
+    return $.ajax(filename, {
+      type: "GET", timeout: 20000
+    });
+  }
+
+  function setInnerHTML(domNode,htmldata) {
+    domNode
+      .html(htmldata);
+  }
+
+  function loadPages() {
+    PAGES.forEach(function(files) {
+      loadHTML(files.from)
+        .done(setInnerHTML.bind(undefined, files.to))
+        .fail(function (error) {
+            alert("Ошибка при загрузку файла: " + error.status);
+        });
+    });
+  }
+
+
+
+
+    </script>
+    </body>
+</html>

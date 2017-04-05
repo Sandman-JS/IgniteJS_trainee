@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+ /*Каков будет результат выполнения этого кода?
+
+var value = 0;
+function f() {
+  if (1) {
+    value = true;
+  } else {
+    var value = false;
+  }
+  alert( value );
+}
+f();
+1.Изменится ли внешняя переменная value ? 
+2.Как изменится рузультат, если из строки var value = false убрать ключевое слово var?
+Ответ:
+1. Переменная value не изменится, локальная переменная.
+2. alert() веведет true, блок else никогда не выполнится. Но если из строки var value = false убрать ключевое слово var и блок else выполнится глобальной пеменной перменной value присвоится значение false и alert() выведет false.*/
+
+/*Задача 2.
+
+Напишите функцию, возвращающую количество собственных вызовов.*/
+ var fn = (function() {
+   var numberOfCalls = 0;
+   return function() {
+      return ++ numberOfCalls;
+   }
+})();
+alert(fn()); //1
+alert(fn()); //2
+alert(fn()); //3
+
+/*Задача 3.
+
+Следующий код создает массив функций-стрелков shoooters. По замыслу, каждый стрелок должен выводить свой номер:
+
+function makeArmy() {
+var shooters = []; 
+
+for (var i = 0; i< 10; i++) {
+      var shooter = function() { // функция-стрелок
+alert(i); // выводит свой номер
+}; 
+shooters.push(shooter); 
+} 
+return shooters; 
+}
+var army = makeArmy(); 
+army[0](); // стрелок выводит 10, а должен 0
+army[5](); // стрелок выводит 10, а должен 5. 
+
+Сейчас все функции-стрелки выводят 10 вместо своего номера. Поправьте код, чтобы при вызове каждой из них она выводила свой номер(индекс в массиве). Предложите несколько вариантов.*/
+
+/*Вариант 1. Привязать значение непосредственно к функции-стрелку.*/
+function makeArmy() {
+
+  var shooters = [];
+
+  for (var i = 0; i < 10; i++) {
+
+    var shooter = function me() {
+      alert( me.i );
+    };
+    shooter.i = i;
+
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+var army = makeArmy();
+
+army[0](); // 0
+army[5](); // 5
+
+/*Вариант 2. Использовать дополнительную функцию для того, чтобы «поймать» текущее значение i.*/
+function makeArmy() {
+
+  var shooters = [];
+
+  for (var i = 0; i < 10; i++) {
+
+    var shooter = (function(x) {
+
+      return function() {
+        alert( x );
+      };
+
+    })(i);
+
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+var army = makeArmy();
+
+army[0](); // 0
+army[5](); // 1
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

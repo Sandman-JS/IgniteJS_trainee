@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <ul>
+    <li>1й Элемент</li>
+    <li>2й Элемент</li>
+    <li>3й Элемент</li>
+  </ul>
+
+  <script>
+  /*Задача 1.
+
+Создайте страницу. Разместите на ней произвольное количеством элементов. Разработайте сценарий, который будет по очереди перемещать span с текстом и интервалом в 400мс: 1) Перед элементом. 2) Внутри элемента перед тектом 3) Внетри элемента после текста. 4) После элемента.*/
+    window.onload = function() {
+      var span = document.createElement('span');
+      var i = 0;
+      var j = 0;
+      var position = ["beforeBegin", "afterBegin", "beforeEnd", "afterEnd"];
+      var elemsList = document.body.getElementsByTagName('*');
+      span.innerHTML = "I am Jumper";
+      var timer = setInterval(function() {
+        if (document.body.getElementsByTagName('span')) {
+          span.remove();
+        }
+        elemsList[i].insertAdjacentElement(position[j], span);
+        j++;
+        if (j == 4) {
+          j = 0;
+          i++;
+        }
+        if (i == elemsList.length - 1) {
+          clearInterval(timer);
+        };
+      }, 1000);
+    }
+  </script>
+</body>
+
+</html>

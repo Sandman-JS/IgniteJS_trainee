@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+    /*Задача 1
+
+Напишите функцию printNumber, которая последовательно выводит в консоль числа от 1 до 20, с интервалом между числами 100мс. То есть, весь вывод должен занимать 2000мс, в течение которых каждые 100мс в консоли появляется очередное число.*/
+function printNumber() {
+      var counter = 1;
+      var myCounter = setInterval(function() {
+
+        console.log(counter);
+        if (counter >= 20) {
+          clearInterval(myCounter);
+        }
+        counter++;
+
+      }, 100);
+    }
+    printNumber();
+
+
+    /*Задача 2
+
+Превратите объект leader из примера ниже в JSON:
+
+var leader = {
+  name: "Василий Иванович",
+  age: 35
+};
+После этого конвертируйте получившуюся строку обратно в объект.*/
+ var leader = {
+      name: "Василий Иванович",
+      age: 35
+    };
+    var str = JSON.stringify(leader);
+
+    leader = JSON.parse(str);
+
+    /*Задача 3
+
+Напишите функцию, которая принимает один аргумент и возвращает его тип данных. Выполните обработку исключений в случае передачи двух и больше аргументов.*/
+ function argType() {
+      try {
+        if (arguments.length > 1) {
+          throw new Error("Введено больше одного аргумента");
+        }
+      } catch (e) {
+        alert('Error: ' + e.message);
+      }
+      return {}.toString.call(arguments[0]).slice(8, -1);
+    }
+    alert(argType([].slice, 4));
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

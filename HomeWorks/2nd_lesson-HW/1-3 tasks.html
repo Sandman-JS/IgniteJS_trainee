@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        /*Задача 1.
+
+        Напишите функцию, которая принимает 1 параметр. При первом вызове она его запоминает, при втором - суммирует переданный параметр с параметром, переданным при предыдущем вызове.
+
+            Например:
+
+        sum(3) = 3
+        sum(5) = 8
+        sum(228) = 236 */
+
+        var value = 0;
+        function sum(i) {
+
+            return value += i;
+        }
+        alert(sum(3));
+        alert(sum(5));
+        alert(sum(228));
+
+        /*Создайте функцию strCount, которая принимает один аргумент (объект) и считает количество свойств строкового типа.
+
+            Например:
+
+        strCount({
+            first: "1",
+            second: "2",
+            third: false,
+            fourth: ["anytime",2,3,4],
+            fifth:  null
+        })
+        //возвращает 3 */
+        var strCount = function (object) {
+            var count = 0;
+            for (var key in object) {
+                if (typeof object[key] === "string" && object.hasOwnProperty(key)) {
+                    count++;
+                }
+                else if (typeof object[key] === "object" && object.hasOwnProperty(key)) {
+                    count += strCount(object[key]);
+                }
+                else if (Array.isArray(object[key]) && object.hasOwnProperty(key)) {
+                    for (var key_2 in object[key]) {
+                        count += strCount(object[key][key_2]);
+                    }
+                }
+            }
+            return count;
+        };
+
+        alert(strCount({
+            first: "1",
+            second: "2",
+            third: false,
+            fourth: ["anytime", 2, 3, 4],
+            fifth: null
+        }));
+
+
+        /*Задача 3.
+
+        Напишите функцию, которая складывает числа при двойном вызове. Например:
+
+        add(3)(4)  // 7*/
+
+        function add(sum1){
+            return function (sum2) {
+                return sum1+sum2
+            }
+        }
+        alert(add(3)(4))
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

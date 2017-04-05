@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <script>
+    /*Задача 2.
+
+    Создайте страницу. Разместите на странице поле ввода, кнопку и пустой div.
+    Создайте сценарий, который при нажатии на кнопку будет записывать содержимое поля ввода в пустой div.*/
+    window.onload = function() {
+      var input = document.getElementById("input");
+      var output = document.getElementById("output");
+      var btn = document.getElementById('btn1');
+      btn.onclick = function() {
+        output.innerHTML = input.value;
+      }
+    }
+  </script>
+  <input id="input" type="text">
+  <button id='btn1'>Write the contents</button>
+  <div id='output'></div>
+</body>
+
+</html>

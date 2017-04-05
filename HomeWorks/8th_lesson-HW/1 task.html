@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+  /*Создайте регистрационную форму: логин, пароль, телефон и кнопка "Отправить". По нажатию на кнопку "Отправить", проверьте корректность ввода данных с помощью JavaScript. 1) Логин - не должен содержать цифры. 2) Пароль - не дожен содержать знак $. 3) Телефон - должен содержать только цифры.
+Закрасьте фон поля ввода в красный цвет, если были введены неправильные данные.
+Используйте для решение данной задачи методы для работы со строками или регулярные выражения: link*/
+    window.onload = function() {
+      var login = document.getElementById("login"),
+        password = document.getElementById("password"),
+        phone = document.getElementById("phone");
+      document.forms[0].onsubmit = function() {
+      	var valid = true;
+        if (login.value.search(/\d/) != -1) {
+          login.style.backgroundColor = "lightcoral";
+          valid = false;
+        }
+        if (password.value.search(/\$/) != -1) {
+          password.style.backgroundColor = "lightcoral";
+          valid = false;
+        }
+        if (phone.value.search(/\D/) != -1) {
+          phone.style.backgroundColor = "lightcoral";
+          valid = false;
+        }
+        return valid;
+      };
+    }
+  </script>
+
+</head>
+
+<body>
+  <form action="#" id="form">
+    Логин:
+    <input type="text" id="login">
+    <br> Пароль:
+    <input type="passwird" id="password">
+    <br> Телефон:
+    <input type="text" id="phone">
+    <br>
+    <input type="submit" value="Отправить">
+  </form>
+</body>
+
+</html>

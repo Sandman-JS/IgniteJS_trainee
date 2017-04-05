@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        /*Задача 1.
+
+Создайте функцию find(arr, value), которая ищет в массиве arr значение value и возвращает его номер, если найдено, или -1, если не найдено. */
+        if ([].indexOf) {
+
+            var find = function (array, value) {
+                return array.indexOf(value);
+            }
+
+        } else {
+            var find = function (array, value) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] === value) return i;
+                }
+
+                return -1;
+            }
+
+        }
+        alert(find([2, 'crack', 7, 'find'], "find"));
+        /*Задача 2.
+
+        var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6]; Отсортируйте массив arr, используя алгоритм пузырьковой сортировки.*/
+        var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6];
+        function BubbleSort(array)       // array - массив, который нужно
+        {                            // отсортировать по возрастанию.
+            var n = array.length;
+            for (var i = 0; i < n - 1; i++) {
+                for (var j = 0; j < n - 1 - i; j++) {
+                    if (array[j + 1] < array[j])
+                    { var t = array[j + 1]; array[j + 1] = arra[j]; array[j] = t; }
+                }
+            }
+            return array;    // На выходе сортированный по возрастанию массив array.
+        }
+        alert(BubbleSort(arr));
+
+       /* Задача 3.
+
+        Напишите функцию bigToSmall, которая будет принимать один аргумент arr (двухмерный массив). Ваше задание: 1. Привести двухмерный массив к одномерному.
+        2. Отсортировать массив в нисходящем порядке. 3. Использовать символ ‘>’ как разделитель при превращении массива в строку.
+
+            Например:
+
+        bigToSmall([[1,2],[3,4],[5,6]])  "6>5>4>3>2>1"
+        bigToSmall([[1,3,5],[2,4,6]])  "6>5>4>3>2>1"
+        bigToSmall([[1,1],[1],[1,1]])  "1>1>1>1>1" */
+
+        function convertToSimpleArray(arrays) {
+            var res = [];
+            for (var i = 0; i < arrays.length; i++)
+                if (!Array.isArray(arrays[i]))
+                    res.push(arrays[i]);
+                else
+                    res = res.concat(convertToSimpleArray(arrays[i]));
+
+
+            return QuickSort(res);
+        }
+
+        function QuickSort(arr) {
+            if (arr.length == 0) return [];
+            var a = [], b = [], p = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] > p) a[a.length] = arr[i];
+                else b[b.length] = arr[i];
+            }
+            return QuickSort(a).concat(p, QuickSort(b));
+        }
+        function bigToSmall(arrays) {
+            return convertToSimpleArray(arrays).join('>');
+        }
+
+        alert(bigToSmall([[1, 2], [3, 4], [5, 6]]));
+        alert(bigToSmall([[1, 3, 5], [2, 4, 6]]));
+        alert(bigToSmall([[1, 1], [1], [1, 1]]));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

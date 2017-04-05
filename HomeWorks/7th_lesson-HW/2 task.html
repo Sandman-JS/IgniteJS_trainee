@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+
+        .div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            position: absolute;
+        }
+
+        }
+    </style>
+    <script>
+    window.onload = function() {
+      var elem = document.createElement("div");
+      elem.className = 'div';
+      var anchor = document.getElementById("anchor");
+      locationAnchor = anchor.getBoundingClientRect()
+
+      function positionAt(anchor, position, elem) {
+        switch (position) {
+          case 'top':
+						elem.style.left = locationAnchor.left + 'px';
+						elem.style.top = locationAnchor.top - 100 + 'px';
+						break;
+					case 'bottom':
+						elem.style.left = locationAnchor.left + 'px';
+						elem.style.top = locationAnchor.bottom + 'px';
+						break;
+					case 'right':
+						elem.style.left = locationAnchor.right + 'px';
+						elem.style.top = locationAnchor.top + 'px';
+						break
+        }
+        document.body.appendChild(elem);
+      }
+      positionAt(anchor, "bottom", elem);
+    }
+    </script>
+</head>
+<body>
+    <div id="div1"><a id="anchor" href="https://dou.ua/">Сообщество программистов</a></div>
+</body>
+</html>

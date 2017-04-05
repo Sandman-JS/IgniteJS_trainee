@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+  <meta charset="utf-8" />
+    <style>
+    html,body{
+  height: 100%;
+}
+   div{
+  line-height: 100px;
+  font-size: 25px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: red;
+  text-align: center;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  
+   }
+ </style>
+ 
+ <script>
+ /*Задача 2.
+
+Создайте круг красного цвета с надписью "Скидка". Когда курсор пользователя будет приближаться к ней, "Скидка" должна от него "убегать", не давая пользователю нажать на красный круг. Если круг будет выйдет за одну из сторон экрана, то он должен, появится с противоположной стороны.*/
+
+window.onload=function(){
+  var div=document.getElementById("sale");
+     document.body.addEventListener("mousemove",function(e){
+      var divOX=div.getBoundingClientRect().left+100;
+          divOY=div.getBoundingClientRect().top+100;
+        if(Math.sqrt(    Math.sqrt(   (Math.pow((e.pageX-divOX),2)+Math.pow((e.pageY-divOY),2) )) <200  )){
+            div.style.left=divOX+(divOX-e.pageX)+"px";
+            div.style.top=divOY+(divOY-e.pageY)+"px";
+            if(divOX<200){
+               div.style.left=document.body.clientWidth-200+"px";
+               
+            }else{
+              if(divOX>document.body.clientWidth-200){
+               div.style.left=200+"px";
+               
+            }
+            }
+            if(divOY<200){
+              div.style.top=document.body.clientHeight-200+"px";
+            }else{
+              if(divOY>document.body.clientHeight-200){
+              div.style.top=200+"px";
+            }
+            }        
+        }
+     });
+  }
+</script>
+  </head>
+
+  <body>
+    <div id="sale">
+    <span>SALE</span>
+</div>
+  </body>
+
+</html>

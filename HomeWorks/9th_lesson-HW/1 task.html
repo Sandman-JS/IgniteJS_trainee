@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+<script>
+/*Задача 1.
+
+Сделайте список, элементы которого можно выделять кликом. Используйте для решения данной задачи свойство e.target.*/
+  
+  window.onload=function(){
+    var ul=document.getElementById("list");
+    ul.addEventListener('click',function(e){
+      e.target.style.backgroundColor="darkcyan";
+    })
+  }
+</script>
+
+</head>
+<body>
+   <ul id="list">
+     <li>Первый элемент</li>
+     <li>Второй элемент</li>
+     <li>Третий элемент </li>
+     <li>Четвертый элемент</li>
+   </ul>
+</body>
+</html>

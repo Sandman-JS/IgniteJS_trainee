@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8">
+    <script>
+    window.onload = function() {
+      document.getElementById('btn').onclick = function() {
+
+        var valueA = document.getElementById('a').value;
+        var valueB = document.getElementById('b').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'CalcHandler.ashx', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send('a=' + valueA + '&b=' + valueB);
+
+        xhr.onload = function() {
+          document.getElementById('output').innerHTML += xhr.responseText + '<br/>';
+
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <span>Please enter the values:</span>
+    <input type="text" id="a">
+    <input type="text" id="b">
+    <input type="button" id="btn" value="Send">
+    <div id="output"></div>
+</body>
+</html>

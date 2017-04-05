@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+
+ .square {
+	width: 100px;
+	height: 100px;
+	background: steelblue;
+    position: absolute;
+}
+ .triangle {
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 100px solid red;
+    position: absolute;
+}
+ .circle {
+	width: 100px;
+	height: 100px;
+	background: yellow;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+    position: absolute;
+}
+      
+    </style>
+</head>
+<body>
+    <script>
+    /*Задача 1.
+
+Создайте страницу с 3 элементами div. Напишите сценарий, который будет произвольно менять положение этиъ элементов на странице каждую секунду.*/
+
+        
+        var divs = document.body.getElementsByTagName('div');
+        setInterval(function () {
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].style.top = Math.random() * 400 + "px";
+                divs[i].style.left = Math.random() * 800 + "px";
+            }
+        }, 1000);
+</script>
+    <div class="square"></div>
+    <div class="triangle"></div>
+    <div class="circle"></div>
+    
+</body>
+</html>

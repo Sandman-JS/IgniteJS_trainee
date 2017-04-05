@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+ /*Задача 1
+
+Почему первое равенство – неверно, а второе – верно?
+
+alert( [] == [] ); // false
+alert( [] ==! [] ); // true
+Какие преобразования происходят при вычислении?
+Ответ:
+Массив это объект, два массива два разных объекта.
+![] - дает нам false, при сравнение первый массив преобразуется в false.*/
+
+/*Задача 2
+
+Напишите функцию-конструктор Calculator, которая создает объект с тремя методами:
+
+Метод read() запрашивает два значения при помощи prompt и запоминает их в свойствах объекта.
+Метод sum() возвращает сумму двух значений принятых от пользователя.
+Метод mul() возвращает произведение двух значений принятых от пользователя.
+Пример использования:
+
+var calculator = new Calculator();
+calculator.read();
+
+alert( "Сумма=" + calculator.sum() );
+alert( "Произведение=" + calculator.mul() );*/
+function Calculator() {
+
+  this.read = function() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  };
+
+  this.sum = function() {
+    return this.a + this.b;
+  };
+
+  this.mul = function() {
+    return this.a * this.b;
+  };
+}
+
+var calculator = new Calculator();
+calculator.read();
+
+alert( "Сумма=" + calculator.sum() );
+alert( "Произведение=" + calculator.mul() );
+
+/*Задача 3
+
+Напишите функцию-конструктор Summator, которая создает объект с двумя методами.
+
+Метод sum(a,b) возвращает сумму двух значений;
+Метод run() запрашивает два значения при помощи prompt и выводит их сумму, используя метод sum. В итоге вызов new Summator().run() должен спрашивать два значения и выводить их сумму.*/
+
+function Summator() {
+
+  this.sum = function(a, b) {
+    return a + b;
+  };
+
+  this.run = function() {
+    var a = +prompt('a?', 0); // преобразовать в число при вводе данных
+    var b = +prompt('b?', 0);
+    alert("sum=" + this.sum(a,b));
+  };
+}
+
+new Summator().run();
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

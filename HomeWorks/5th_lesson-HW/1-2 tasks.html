@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        /*Задача 1
+
+        Напишите программу, которая принимает математическое выражение (используйте prompt) и результат его получает через eval. При ошибке нужно выводить сообщение и просить изменить некорректный ввод. Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение, возвращающее NaN, например 0/0.*/
+
+
+        function calc() {
+            var mathExpression = prompt("Введите математическое выражение:", 0);
+            try {
+                if (isNaN(eval(mathExpression))) {
+                    throw new Error("");
+
+                } else { alert(eval(mathExpression)); }
+            } catch (e) {
+                alert("Ошибка, некорректные данные, пожалуйста повторите ввод!");
+                calc();
+            }
+        }
+        calc();
+
+        /*Задача 2
+
+            Напишите функцию smartSum, которая:
+
+            Принимает произвольное количество аргументов;
+            Возвращает сумму всех переданных ей аргументов;
+            Принимает за 0 любой аргумент, который не может быть преобразован в числовой тип (т.е при попытке его парсить возвращается NaN);
+            Может быть вызвана неограниченное количество раз;*/
+
+        function smartSum() {
+            var result = 0;
+            [].forEach.call(arguments, function (item) {
+                result = result + item;
+            });
+
+            return (function nextSum() {
+                [].forEach.call(arguments, function (item) {
+                    result = result + item;
+                });
+
+                nextSum.toString = function () {
+                    return result;
+                }
+
+                return nextSum;
+            })();
+        };
+
+        alert(smartSum(3)) // 3; 
+        alert(smartSum(1, 2))  // 3;
+        alert(smartSum(1, 3)(2)) // 6; 
+        alert(smartSum(1, 2)(3, 4, 5)(6)(7, 10)) // 38; 
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+       /*Задача 1.
+
+Мини-задача на синтаксис объектов. Напишите код, по строке на каждое действие.
+
+Создайте пустой объект user.
+Добавьте свойство name со значением Вася.
+Добавьте свойство surname со значением Петров.
+Поменяйте значение name на Сергей.
+Удалите свойство name из объекта. */
+var user = {};
+user.name = "Вася";
+user.surname = "Петров";
+user.name = "Сергей";
+delete user.name;
+
+/*Задача 2.
+
+Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно свойство есть.*/
+function isEmpty(obj) {
+  for (var key in obj) {
+    return false;
+  }
+  return true;
+}
+
+var schedule = {};
+
+alert( isEmpty(schedule) ); // true
+
+schedule["8:30"] = "подъём";
+
+alert( isEmpty(schedule) ); // false
+
+/*Задача 3.
+
+Дан массив чисел: [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90]. 1) Найдите максимальное и минимальное значение массива. 2) Все положительные и четные числа запишите в другой массив. Результаты выведите на экран.*/
+
+ var arr = [1, 2, 31, 24, -67, 5, 3, 555, 79, -4, 21, 33, 89, -90];
+    alert(Math.min.apply(null, arr));
+    alert(Math.max.apply(null, arr));
+    var newArr = arr.filter(function(number) {
+      return (number > 0) & (number % 2 == 0);
+    });
+    alert(newArr)
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

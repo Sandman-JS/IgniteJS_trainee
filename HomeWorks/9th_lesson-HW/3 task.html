@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #square {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: darkcyan;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" placeholder="Ось-X" id="x">
+  <input type="text" placeholder="Ось-Y" id="y">
+  <button id="btn">Переместить</button>
+  <div id="square"></div>
+
+  <script>
+  /*Задача 3.
+
+Создайте страницу с двумя полями ввода, кнопкой и элементом div с шириной и высотой 50px. Создайте сценарий, который по нажатию на кнопку будет перемещать div в координаты, указанные в полях ввода. В случае, если при нажатии кнопки хотя бы одно из полей ввода не заполнено, пользователь должен получить предупреждение, а событие click должно быть отменено.*/
+    window.onload = function() {
+      var btn = document.getElementById("btn");
+      var x = document.getElementById("x");
+      var y = document.getElementById("y");
+      var div = document.getElementById("square");
+
+      function moveSquare(e) {
+        if (x.value == "" || y.value == "") {
+          e.stopPropagation();
+          alert("Пожалуйста, введите корректные координаты!");
+        } else {
+          div.style.left = x.value + "px";
+          div.style.top = y.value + "px";
+        }
+      }
+      btn.addEventListener("click", moveSquare)
+    }
+  </script>
+</body>
+
+</html>
